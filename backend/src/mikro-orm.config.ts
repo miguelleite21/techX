@@ -1,7 +1,6 @@
 import { Options } from '@mikro-orm/core';
 import { MySqlDriver } from '@mikro-orm/mysql';
 
-console.log('DB_HOST:', process.env.DB_HOST);
 const mikroOrmConfig: Options<MySqlDriver> = {
   driver: MySqlDriver,
   host: process.env.DB_HOST || '127.0.0.1',

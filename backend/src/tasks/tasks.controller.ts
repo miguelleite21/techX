@@ -18,7 +18,6 @@ export class TasksController {
   @ApiBody({ type: CreateTaskDto, description: 'Data to create a new task' })
   @ApiResponse({ status: 201, description: 'Task successfully created', type: Task })
   create(@Req() req, @Body() dto: CreateTaskDto) {
-    console.log('Authenticated user:', req.user);
     return this.service.create(dto, req.user);
   }
 
