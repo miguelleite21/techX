@@ -9,8 +9,12 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('TechX API')
+    .setDescription('API for task management')
     .setVersion('1.0')
-    .addBearerAuth()
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'JWT' 
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

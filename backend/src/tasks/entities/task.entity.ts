@@ -1,5 +1,5 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
-
+import { Entity, PrimaryKey, Property, ManyToOne } from '@mikro-orm/core';
+import { User } from '../../auth/entities/user.entity';
 @Entity()
 export class Task {
     @PrimaryKey()
@@ -20,4 +20,7 @@ export class Task {
 
     @Property({ onUpdate: () => new Date(), nullable: true })
     updatedAt?: Date;
+
+    @ManyToOne(() => User)
+    user!: User; 
 }
