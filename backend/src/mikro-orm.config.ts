@@ -14,6 +14,11 @@ const mikroOrmConfig: Options<MySqlDriver> = {
     path: 'dist/migrations',
     pathTs: 'src/migrations',
   },
+   seeder: {
+    path: './src/seeders', 
+    defaultSeeder: 'DatabaseSeeder', 
+    glob: '!(*.d).{js,ts}', 
+  },
   // debug: true,
 };
 

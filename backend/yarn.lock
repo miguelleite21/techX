@@ -974,6 +974,14 @@
   resolved "https://registry.yarnpkg.com/@mikro-orm/nestjs/-/nestjs-6.1.1.tgz#eb997289985c0a25769e59261e5e7dda776d4c8a"
   integrity sha512-aluD3eTeuCvIePDk5UBanHIhu1zAJQXqWAg47MZdHJmFkNuXn62DCXbD2c4X5TCpKW/m0zjba22ilyZ/AFG9qg==
 
+"@mikro-orm/seeder@^6.5.2":
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/seeder/-/seeder-6.5.2.tgz#56855d744f366c4025f25508044323b30fbf3190"
+  integrity sha512-ZTWXXbhBW98gjE/7vEKA33+xToQeQddUm/qm/RvBgk5XhBIuH956sCkUYrQxqEkssZmOfd0aiS1y3Q8crF8dqw==
+  dependencies:
+    fs-extra "11.3.1"
+    globby "11.1.0"
+
 "@napi-rs/wasm-runtime@^0.2.11":
   version "0.2.12"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.12.tgz#3e78a8b96e6c33a6c517e1894efbd5385a7cb6f2"
