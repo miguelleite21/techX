@@ -6,6 +6,9 @@ Este projeto é uma aplicação web full stack de um gerenciador de tarefas (to-
 
 ### Funcionalidades Principais:
 - **Frontend (a ser implementado):**
+  - Interface desenvolvida com Angular 18 e Angular Material.
+  - Páginas de login e registro.
+  - Botões para criar tarefa, editar, deletar e logout.
 - **Backend:** API RESTful construída com NestJS e TypeScript, incluindo operações CRUD para tarefas, autenticação de usuários com JWT, e autorização baseada em papéis (usuários normais e admin).
 - **Autenticação e Autorização:**
   - Criação de usuários (register) com senha hasheada via bcrypt.
@@ -17,6 +20,13 @@ Este projeto é uma aplicação web full stack de um gerenciador de tarefas (to-
 - **Estrutura:** Monorepo com pastas `backend` e `frontend`(a ser implementado). Versionamento com Git, Docker para containerização.
 
 O projeto segue boas práticas: código modular, validação com DTOs (class-validator), guards para auth/admin, e commits incrementais
+
+### Tecnologias Utilizadas (Frontend):
+- Angular 18: Framework para construção da interface.
+- Angular Material: Componentes de UI (cards, botões, formulários, modal, snackbar).
+- TypeScript: Tipagem estática.
+- Docker e Docker Compose para ambiente de desenvolvimento/produção.
+- Yarn como gerenciador de pacotes.
 
 ### Tecnologias Utilizadas (Backend):
 - Node.js com NestJS (framework para API RESTful).
@@ -42,44 +52,55 @@ O projeto segue boas práticas: código modular, validação com DTOs (class-val
    git clone https://github.com/miguelleite21/techX
    cd techx
    ```
-
-2. Navegue até o backend e instale dependências:
-   ```
-   cd backend
-   yarn install
-   ```
-
-4. Configure o arquivo `.env` no backend (copie o ".env.exemple" ou crie um baseado em exemplo abaixo):
-   ```
-   DB_HOST=172.18.0.1
-   DB_PORT=3306
-   DB_USER=root
-   DB_PASS=1234
-   DB_NAME=techx_todo
-   JWT_SECRET=techx (Mude para um secret forte em produção)
-   ```
-
+2. Backend:
+   - Navegue até o backend e instale dependências:
+      ```
+      cd backend
+      yarn install
+      ```
+   - Configure o arquivo `.env` no backend (copie o ".env.exemple" ou crie um baseado em exemplo abaixo):
+      ```
+      DB_HOST=172.18.0.1
+      DB_PORT=3306
+      DB_USER=root
+      DB_PASS=1234
+      DB_NAME=techx_todo
+      JWT_SECRET=techx (Mude para um secret forte em produção)
+      ```
+2. Frontend:
+   - Navegue até o frontend e instale dependências:
+      ```
+      cd frontend
+      yarn install
+      ```
 ## Execução Local
 
-1. Inicie o banco MySQL.
-   ```
-   docker compose up --build -d db
-   ```
-- Isso inicia o MySQL (db).
-
-2. Rode migrações e seeder:
-   ```
-   yarn mikro-orm migration:up
-   yarn mikro-orm seeder:run
-   ```
-
-3. Inicie o servidor backend:
-   ```
-   yarn start:dev
-   ```
-
-- A API estará disponível em `http://localhost:3000`.
-- Swagger (documentação das rotas): `http://localhost:3000/api`.
+### Banco de dados
+   1. Inicie o banco MySQL.
+      ```
+      docker compose up --build -d db
+      ```
+   - Isso inicia o MySQL (db).
+### Backend
+   1. Rode migrações e seeder:
+      ```
+      cd backend
+      yarn mikro-orm migration:up
+      yarn mikro-orm seeder:run
+      ```
+   2. Inicie o servidor backend:
+      ```
+      yarn start:dev
+      ```
+   - A API estará disponível em `http://localhost:3000`.
+   - Swagger (documentação das rotas): `http://localhost:3000/api`.
+### Frontend
+   1. Inicie o servidor frontend:
+      ```
+      cd frontend
+      yarn dev
+      ```
+   - O frontend estará disponível em `http://localhost:4200`.
 
 ## Execução com Docker
 
@@ -87,9 +108,9 @@ O projeto segue boas práticas: código modular, validação com DTOs (class-val
    ```
    docker compose up --build -d
    ```
-
-- Isso inicia o MySQL (db) e o backend.
+- Isso inicia o MySQL (db), o frontend e o backend.
 - Migrações e seeder rodam automaticamente no startup do backend.
+- Acesse o frontend em `http://localhost:4200`.
 - Acesse a API em `http://localhost:3000`.
 - Swagger: `http://localhost:3000/api`.
 
@@ -101,6 +122,7 @@ O projeto segue boas práticas: código modular, validação com DTOs (class-val
 3. Logs para depuração:
    ```
    docker compose logs backend
+   docker compose logs frontend
    ```
 
 ## Documentação da API (Swagger)
