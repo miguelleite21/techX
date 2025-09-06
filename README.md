@@ -5,7 +5,7 @@
 Este projeto é uma aplicação web full stack de um gerenciador de tarefas (to-do list) simples e eficiente, permitindo que usuários organizem suas tarefas diárias.
 
 ### Funcionalidades Principais:
-- **Frontend (a ser implementado):**
+- **Frontend:**
   - Interface desenvolvida com Angular 18 e Angular Material.
   - Páginas de login e registro.
   - Botões para criar tarefa, editar, deletar e logout.
