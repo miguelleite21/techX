@@ -104,7 +104,7 @@ O projeto segue boas práticas: código modular, validação com DTOs (class-val
 
 ## Execução com Docker
 
-1. No diretório raiz (`techx/`), rode:
+1. No diretório raiz (`techX/`), rode:
    ```
    docker compose up --build -d
    ```
