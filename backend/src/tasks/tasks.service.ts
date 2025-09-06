@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@mikro-orm/nestjs';
-import { EntityRepository, EntityManager } from '@mikro-orm/core';
+import { EntityRepository, EntityManager, wrap } from '@mikro-orm/core';
 import { Task } from './entities/task.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -34,17 +34,18 @@ export class TasksService {
   }
 
   async update(id: number, dto: UpdateTaskDto, currentUser: User): Promise<Task> {
-    const task = await this.findOne(id, currentUser);
-    Object.assign(task, dto);
-    task.updatedAt = new Date(); 
-    await this.taskRepo.getEntityManager().flush();
+    const task = await this.taskRepo.findOneOrFail(id, { populate: ['user'] });
+    this.checkOwnership(task, currentUser);
+    wrap(task).assign(dto);
+    task.updatedAt = new Date();
+    await this.em.flush();
     return this.removeUserProp(task);
   }
 
   async remove(id: number, currentUser: User): Promise<Task> {
-const task = await this.findOne(id, currentUser);
-  await this.taskRepo.getEntityManager().nativeDelete(Task, { id });
-  return task;
+    const task = await this.findOne(id, currentUser);
+    await this.taskRepo.getEntityManager().nativeDelete(Task, { id });
+    return task;
   }
 
   private checkOwnership(task: Task, currentUser: User) {
