@@ -39,5 +39,19 @@ services:
     command: >
       sh -c "yarn mikro-orm migration:up && yarn mikro-orm seeder:run && yarn start:dev"
 
+  frontend:
+      build:
+        context: ./frontend
+        dockerfile: Dockerfile
+      container_name: techx-frontend
+      ports:
+        - "4200:4200"
+      depends_on:
+        - backend
+      environment:
+        - API_URL=http://backend:3000
+      volumes:
+        - ./frontend:/app
+        - /app/node_modules
 volumes:
   db-data:
