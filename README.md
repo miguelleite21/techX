@@ -50,7 +50,7 @@ O projeto segue boas práticas: código modular, validação com DTOs (class-val
 1. Clone o repositório:
    ```
    git clone https://github.com/miguelleite21/techX
-   cd techx
+   cd techX
    ```
 2. Backend:
    - Navegue até o backend e instale dependências:
